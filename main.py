@@ -7,11 +7,6 @@ import random
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
-class Slapper(commands.Converter):
-    async def convert(self, ctx, argument):
-        to_slap = random.choice(ctx.guild.members)
-        return f'{ctx.author} slapped {to_slap} because *{argument}*'
-
 bot_statuses = cycle(['Thinking about you ♥️', 'I love cheese... and milk... I\'m not lactose intolerant I promise!', 'What\'s the difference between a snowman and a snow woman? The snow balls! 😎'])
 
 @tasks.loop(seconds=15)
@@ -22,10 +17,6 @@ async def change_status():
 async def on_ready():
     change_status.start()
     print(f'{bot.user.name} is ready to rumble!')
-
-@bot.command()
-async def slap(ctx, *, reason: Slapper):
-    await ctx.send(reason)
 
 @bot.command()
 async def mimic(ctx, *, arg):

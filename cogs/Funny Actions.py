@@ -67,6 +67,15 @@ class Funny_Actions(commands.Cog):
             await ctx.send(embed=embed)
             await asyncio.sleep(0.1)
 
+    @commands.Command
+    async def slap(self, ctx, arg: Optional[str]):
+        if arg == None:
+            await ctx.send('Please give a reason why at least! You can\'t just slap someone for no reason!')
+        else:
+            to_slap = random.choice(ctx.guild.members)
+            await ctx.send(f'{ctx.author} slapped {to_slap} because *{arg}*')
+            await ctx.send('👏👏👏')
+
     def cog_unload(self):
         self.bot.loop.create_task(self.reddit.close())
 
