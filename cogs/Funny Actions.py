@@ -76,6 +76,10 @@ class Funny_Actions(commands.Cog):
             await ctx.send(f'{ctx.author} slapped {to_slap} because *{arg}*')
             await ctx.send('👏👏👏')
 
+    @commands.command()
+    async def mimic(self, ctx, *, arg):
+        await ctx.send(arg)
+
     def cog_unload(self):
         self.bot.loop.create_task(self.reddit.close())
 

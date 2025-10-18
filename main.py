@@ -7,7 +7,9 @@ import random
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
-bot_statuses = cycle(['Thinking about you ♥️', 'I love cheese... and milk... I\'m not lactose intolerant I promise!', 'What\'s the difference between a snowman and a snow woman? The snow balls! 😎'])
+with open('./cogs/bot_statuses.txt') as f:
+    statuses = f.readlines()
+    bot_statuses = cycle(statuses)
 
 @tasks.loop(seconds=15)
 async def change_status():
@@ -17,19 +19,6 @@ async def change_status():
 async def on_ready():
     change_status.start()
     print(f'{bot.user.name} is ready to rumble!')
-
-@bot.command()
-async def mimic(ctx, *, arg):
-    await ctx.send(arg)
-
-@bot.command()
-async def sendembed(ctx):
-    embed = discord.Embed(title="Sample Embed", description="This is an example of an embedded message.", color = discord.Color.blue())
-    embed.set_thumbnail(url=ctx.author.avatar.url)
-    embed.add_field(name='Name of field', value='Value of field', inline=False)
-    embed.set_image(url=ctx.guild.icon)
-    embed.set_author(name='author text', icon_url=ctx.author.avatar.url)
-    await ctx.send(embed = embed)
 
 with open('token.txt') as file:
     token = file.read()
