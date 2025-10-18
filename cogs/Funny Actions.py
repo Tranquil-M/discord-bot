@@ -40,7 +40,7 @@ class Funny_Actions(commands.Cog):
         subreddit = await self.reddit.subreddit('cats')
         posts_list = []
 
-        async for post in subreddit.hot(limit=60):
+        async for post in subreddit.hot(limit=150):
             if not post.over_18 and post.author is not None and any(post.url.endswith(ext) for ext in ['.png', '.jpg', '.jpeg', '.gif']):
                 author_name = post.author.name
                 posts_list.append((post.url, author_name))
