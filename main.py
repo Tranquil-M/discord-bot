@@ -1,3 +1,4 @@
+from code import interact
 import discord
 from discord.ext import commands, tasks
 from itertools import cycle
@@ -5,13 +6,15 @@ import os
 import asyncio
 import random
 
-bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+intents = discord.Intents.default()
+intents.members = True
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 with open('./cogs/bot_statuses.txt') as f:
     statuses = f.readlines()
     bot_statuses = cycle(statuses)
 
-@tasks.loop(seconds=15)
+@tasks.loop(seconds=30)
 async def change_status():
     await bot.change_presence(activity=discord.CustomActivity(name=next(bot_statuses)))
 
