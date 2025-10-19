@@ -4,10 +4,8 @@ from discord.ext import commands, tasks
 from itertools import cycle
 import os
 import asyncio
-import random
 
-intents = discord.Intents.default()
-intents.members = True
+intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 with open('./cogs/bot_statuses.txt') as f:
@@ -22,6 +20,15 @@ async def change_status():
 async def on_ready():
     change_status.start()
     print(f'{bot.user.name} is ready to rumble!')
+    try:
+        synced_commands = await bot.tree.sync()
+        print(f'Synced {len(synced_commands)} commands.')
+    except Exception as e:
+        print('An error with suncing application commands has occurd: ', e)
+
+@bot.tree.command(name='hello', description='Says hello back to the person who ran the command.')
+async def hello(interaction: discord.Interaction):
+    await interaction.response.send_message(f'{interaction.user.mention} Hello there!')
 
 with open('token.txt') as file:
     token = file.read()
