@@ -1,12 +1,13 @@
 import discord
+from discord import app_commands
 from discord.ext import commands, tasks
 from itertools import cycle
 import os
 import asyncio
 from dotenv import load_dotenv
-# import logging
+import logging
 
-# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
 load_dotenv('./token.env')
 TOKEN: str = os.getenv('TOKEN')
@@ -35,6 +36,20 @@ async def on_ready():
 @bot.tree.command(name='hello', description='Says hello back to the person who ran the command.')
 async def hello(interaction: discord.Interaction):
     await interaction.response.send_message(f'{interaction.user.mention} Hello there!')
+
+@bot.tree.error
+async def on_app_command_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.MissingPermissions):
+        await interaction.response.send_message(f"You don't have the required permissions to use this command. You need: {', '.join(error.missing_permissions)}. Sorry!", ephemeral=True)
+    else:
+        raise error
+
+@bot.tree.error
+async def on_app_command_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandInvokeError):
+        await interaction.response.send_message(f'You\'re either trying to run this on yourself, or me. And I don\'t like the idea of either!', ephemeral=True)
+    else:
+        raise error
 
 async def load():
     for filename in os.listdir('./cogs'):

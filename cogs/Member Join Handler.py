@@ -10,7 +10,7 @@ class Member_Join_Handler(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'Member_Join_Handler is ready to go! I think...')
+        print(f'{__name__} is ready to go! I think...')
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):

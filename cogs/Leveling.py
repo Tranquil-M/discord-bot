@@ -7,7 +7,7 @@ class Leveling(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print('Leveling is online and ready to get some execution points!')
+        print(f'{__name__} is online and ready to get some execution points!')
 
 async def setup(bot):
     await bot.add_cog(Leveling(bot))
