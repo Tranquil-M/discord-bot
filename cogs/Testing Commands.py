@@ -15,7 +15,7 @@ class Testing_Commands(commands.Cog):
         await interaction.response.defer()
         ping_embed = discord.Embed(title='Ping', description='Latency in milliseconds. In basic terms, how laggy the bot is.', color=discord.Color.blue())
         ping_embed.add_field(name=f'{self.bot.user.name}\'s Latency (ms):', value=f'{round(self.bot.latency * 1000)} ms', inline=False)
-        ping_embed.set_author(name=f'Requested by {interaction.user.name}', icon_url=interaction.user.avatar.url)
+        ping_embed.set_author(name=f'Requested by {interaction.user.name}', icon_url=interaction.user.display_avatar.url)
         await interaction.followup.send(embed = ping_embed)
         
 async def setup(bot): 

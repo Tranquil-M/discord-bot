@@ -34,7 +34,7 @@ class Funny_Actions(commands.Cog):
         if posts_list:
             random_post = random.choice(posts_list)
             meme_embed = discord.Embed(color=discord.Color.blue())
-            meme_embed.set_author(name=f'Meme request by {interaction.user.name}', icon_url=interaction.user.avatar.url)
+            meme_embed.set_author(name=f'Meme request by {interaction.user.name}', icon_url=interaction.user.display_avatar.url)
             meme_embed.set_image(url=random_post[0])
             meme_embed.set_footer(text=f'Post created by {random_post[1]}.', icon_url=None)
 
@@ -45,8 +45,7 @@ class Funny_Actions(commands.Cog):
     @app_commands.command(name='cats', description='Grabs a random cat image')
     async def cats(self, interaction: discord.Interaction, amount: Optional[int]):
         await interaction.response.defer()
-        await interaction.delete_original_response()
-        if amount == None:
+        if amount == None or amount < 0:
             amount = 1
         elif amount > 10:
             await interaction.followup.send('Please keep it under 10 cats at a time! I don\'t have enough food to get more than 10 cats to pose... 😭')
@@ -54,11 +53,12 @@ class Funny_Actions(commands.Cog):
             await interaction.channel.send('Here, take a picture of me instead!')
             await asyncio.sleep(1)
             embed = discord.Embed(colour = discord.Colour.blue())
-            embed.set_image(url=self.bot.user.avatar.url) 
+            embed.set_image(url=self.bot.user.display_avatar.url) 
             embed.set_footer(text=f'Most beautiful cat alive... 😮‍💨')
             await interaction.channel.send(embed=embed)
             return
-            
+        
+        await interaction.delete_original_response()
         async with aiohttp.ClientSession() as session:
             async with session.get('https://api.thecatapi.com/v1/images/search?limit=10') as response:
                 data = await response.json()
@@ -67,7 +67,7 @@ class Funny_Actions(commands.Cog):
             cat_image_url = data[i]['url']
             i = discord.Embed(colour = discord.Colour.blue())
             i.set_image(url=cat_image_url)
-            i.set_footer(text=f'Cats requested by {interaction.user.name}', icon_url=interaction.user.avatar.url)
+            i.set_footer(text=f'Cats requested by {interaction.user.name}', icon_url=interaction.user.display_avatar.url)
             embeds.append(i)
         
         for embed in embeds:

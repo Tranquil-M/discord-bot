@@ -1,4 +1,5 @@
 import datetime
+from xmlrpc.client import Boolean
 import discord
 from discord.ext import commands
 from discord import app_commands
@@ -68,7 +69,7 @@ class Moderation(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         duration = datetime.timedelta(minutes=minutes)
         await member.timeout(duration, reason=reason)
-        await interaction.followup.send(f'Timed out {member.mention} for {minutes} minutes! Was he really that annoying..?')
+        await interaction.followup.send(f'Timed out {member.mention} for {minutes} minutes! Were they really that annoying..?')
 
     @app_commands.command(name='unmute', description='Removes timeout from a user.')
     @app_commands.checks.has_permissions(moderate_members=True)
