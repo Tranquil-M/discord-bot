@@ -3,3 +3,4 @@
 discord.py
 asyncpraw
 easy-pil
+python-dotenv

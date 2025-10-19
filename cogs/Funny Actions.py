@@ -45,6 +45,7 @@ class Funny_Actions(commands.Cog):
     @app_commands.command(name='cats', description='Grabs a random cat image')
     async def cats(self, interaction: discord.Interaction, amount: Optional[int]):
         await interaction.response.defer()
+        await interaction.delete_original_response()
         if amount == None:
             amount = 1
         elif amount > 10:

@@ -1,9 +1,12 @@
-from code import interact
 import discord
 from discord.ext import commands, tasks
 from itertools import cycle
 import os
 import asyncio
+from dotenv import load_dotenv
+
+load_dotenv('./token.env')
+TOKEN: str = os.getenv('TOKEN')
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
@@ -30,9 +33,6 @@ async def on_ready():
 async def hello(interaction: discord.Interaction):
     await interaction.response.send_message(f'{interaction.user.mention} Hello there!')
 
-with open('token.txt') as file:
-    token = file.read()
-
 async def load():
     for filename in os.listdir('./cogs'):
         if filename.endswith('.py'):
@@ -41,6 +41,6 @@ async def load():
 async def main():
     async with bot:
         await load()
-        await bot.start(token)
+        await bot.start(TOKEN)
 
 asyncio.run(main())
