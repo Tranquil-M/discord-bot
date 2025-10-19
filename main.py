@@ -4,6 +4,9 @@ from itertools import cycle
 import os
 import asyncio
 from dotenv import load_dotenv
+# import logging
+
+# logging.basicConfig(level=logging.INFO)
 
 load_dotenv('./token.env')
 TOKEN: str = os.getenv('TOKEN')
@@ -27,7 +30,7 @@ async def on_ready():
         synced_commands = await bot.tree.sync()
         print(f'Synced {len(synced_commands)} commands.')
     except Exception as e:
-        print('An error with suncing application commands has occurd: ', e)
+        print('An error with syncing application commands has occurd: ', e)
 
 @bot.tree.command(name='hello', description='Says hello back to the person who ran the command.')
 async def hello(interaction: discord.Interaction):
