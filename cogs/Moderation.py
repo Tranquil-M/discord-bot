@@ -24,11 +24,10 @@ class Moderation(commands.Cog):
             return
         elif amount > 100:
             await interaction.delete_original_response()
-            await interaction.followup.send(f'WOAH, {interaction.user.mention}! Calm down! Keep under 500 please? I have my limits too!')
+            await interaction.followup.send(f'WOAH, {interaction.user.mention}! Calm down! Keep under 100 please? I have my limits too!')
             return
         
         deleted_messages = await interaction.channel.purge(limit = amount)
-        await asyncio.sleep(2)
         await interaction.channel.send(f'Deleted {len(deleted_messages)} messages! ...you can\'t bring them back. So I hope you did this right, {interaction.user.mention}!')
 
     @app_commands.command(name='kick', description='Kicks a specified member.')
@@ -54,7 +53,7 @@ class Moderation(commands.Cog):
                 user = ban_entry.user
                 if (user.name) == (member_name):
                     await interaction.guild.unban(user)
-                    await interaction.followup.send(f"Unbanned {user.name}. Welcome back!", ephemeral=True)
+                    await interaction.followup.send(f"Unbanned {user.name}. Welcome back!")
                     return
 
             await interaction.followup.send(f"Okay, um... says here '{member_identifier}' isn\'t, like, banned? Try a different user.")

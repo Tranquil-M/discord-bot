@@ -1,4 +1,3 @@
-from code import interact
 from typing import Optional
 from urllib import response
 import discord
@@ -87,7 +86,7 @@ class Funny_Actions(commands.Cog):
     @app_commands.command(name='mimic', description='Mimics anything you say!')
     async def mimic(self, interaction: discord.Interaction, *, sentence: str):
         await interaction.response.defer()
-        await interaction.followup.send(sentence, ephemeral=True)
+        await interaction.followup.send(sentence)
 
     def cog_unload(self):
         self.bot.loop.create_task(self.reddit.close())
