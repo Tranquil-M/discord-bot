@@ -1,6 +1,4 @@
-#If you are an Arch Linux user, like me, create a venv using the command 'python3.13 -m venv bot_packages'. Then, activate it by typing 'source bot_packages/bin/activate'. You can deactivate it by typing 'deactivate' when you finish.
-#If you are on Arch Linux, as of Saturday, October 18, you must be using python 3.13 in order to user easy-pil. Alternatively, you could use Pillow instead, but easy-pil is significantly easier to deal with.
 discord.py
-asyncpraw
 easy-pil
 python-dotenv
+pet-pet-gif
