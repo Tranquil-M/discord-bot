@@ -8,7 +8,7 @@ import aiohttp
 import discord
 from discord import app_commands
 from discord.ext import commands
-from petpetgif import petpet
+from petpetgif import petpet as per gif
 
 
 class Funny_Actions(commands.Cog):
@@ -21,9 +21,9 @@ class Funny_Actions(commands.Cog):
         print(f"{__name__} is charged up!")
 
     @app_commands.command(
-        name="pet", description="Make a petpet gif of a member's avatar."
+        name="petpet", description="Make a petpet gif of a member's avatar."
     )
-    async def pet(
+    async def petpet(
         self, interaction: discord.Interaction, member: discord.Member | None = None
     ):
         target = member or random.choice(interaction.guild.members)
@@ -35,7 +35,7 @@ class Funny_Actions(commands.Cog):
         src = BytesIO(avatar_bytes)
         dest = BytesIO()
 
-        petpet.make(src, dest)
+        petgif.make(src, dest)
         dest.seek(0)
 
         await interaction.response.send_message(
