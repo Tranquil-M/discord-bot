@@ -52,10 +52,10 @@ CatBot has several amazing commands/features, so let's go over all of them right
     &nbsp;&nbsp;&nbsp; For unity, CatBot contains the ability to push people off the plank with just their username.
 
 * **Muting/Unmuting** \
-    &nbsp;&nbsp;&nbsp; When someone get's a little too rowdy, you can easily mute and unmute then for any given amount of time. You can also unmute them before their sentence ends just in case. This command utilizes discord's timeout function.
+    &nbsp;&nbsp;&nbsp; When someone get's a little too rowdy, you can easily mute them for any given amount of time. You can also unmute them before their sentence ends just in case. This command utilizes discord's timeout function.
 
 * **History Clearing** \
-    &nbsp;&nbsp;&nbsp; If your chat messages is too much of a hassle to delete, then you can easily clear chat history with the clear command!
+    &nbsp;&nbsp;&nbsp; If your chat messages is too much of a hassle to delete, then you can easily clear chat history with the clear command! You can clear up to 100 messages at a time.
 
 | Clearing |
 |----------|
