@@ -83,7 +83,7 @@ CatBot has several amazing commands/features, so let's go over all of them right
 * **Cats** \
     &nbsp;&nbsp;&nbsp; Do you like-- no, _love_ looking at cat pictures? I mean, that's what the internet is built on! The cats command grabs up to 10 random cats from the [CAAS (Cats as a Service)](https://cataas.com/) API.
 
-| Join | Limit |
+| Cats | Limit |
 |------|-------|
 | ![cats_cmd](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Cats.png?raw=true) | ![cats_limit](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Cats_Limit.png?raw=true) |
 
