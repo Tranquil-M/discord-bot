@@ -1,5 +1,5 @@
-import discord
 from discord.ext import commands
+
 
 class Leveling(commands.Cog):
     def __init__(self, bot):
@@ -7,7 +7,8 @@ class Leveling(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'{__name__} is online and ready to get some execution points!')
+        print(f"{__name__} is online and ready to get some execution points!")
+
 
 async def setup(bot):
     await bot.add_cog(Leveling(bot))
