@@ -34,6 +34,10 @@ CatBot has several amazing commands/features, so let's go over all of them right
 * **Member Joining/Leaving** \
     &nbsp;&nbsp;&nbsp; Upon new members joining or leaving the guild/server, CatBot will either welcome the user with a cute little graphic or cry uncontrollably, begging for the person to return to them if they choose to leave.
 
+| Join | Leave |
+|------|-------|
+| ![member_join](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Joining.png?raw=true) | ![member_leave](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Leaving.png?raw=true) |
+
 ### Testing Commands
 
 * **Pinging** \
@@ -53,23 +57,43 @@ CatBot has several amazing commands/features, so let's go over all of them right
 * **History Clearing** \
     &nbsp;&nbsp;&nbsp; If your chat messages is too much of a hassle to delete, then you can easily clear chat history with the clear command!
 
+| Clearing |
+|----------|
+|![clearing](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Clear.png?raw=true)|
+
 ### Funny Commands
 
 * **PetPet** \
     &nbsp;&nbsp;&nbsp; Ever wanted to show your ever-burning affection for your friends on discord? No? Well, just in case you want to CatBot really loves to pet people! You can choose to either pet a specific user, or leave it unspecified to pet someone at random.
 
+| PetPet |
+|----------|
+|![pet](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Pet.png?raw=true)|
+
 * **Meow** \
     &nbsp;&nbsp;&nbsp; What's a cat if it doesn't meow? The meow command tells CatBot to let out a cute little meow to ease your day. All sound affects are recorded and edited by my friends.
 
-* **Meme** \
+* **Memes** \
     &nbsp;&nbsp;&nbsp; Everybody needs some humor in their life! The meme command grabs a random, SFW, meme from the first 500 entries on `r/memes`.
+
+| Memes |
+|----------|
+|![meme](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Memes.png?raw=true)|
 
 * **Cats** \
     &nbsp;&nbsp;&nbsp; Do you like-- no, _love_ looking at cat pictures? I mean, that's what the internet is based on! The cats command grabs up to 10 random cats from the [CAAS (Cats as a Service)](https://cataas.com/) API.
 
+| Join | Limit |
+|------|-------|
+| ![cats_cmd](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Cats.png?raw=true) | ![cats_limit](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Cats_Limit.png?raw=true) |
+
 * **Slap** \
     &nbsp;&nbsp;&nbsp; Feeling a little mischeivous? Who's stopping you from taking it up a notch? Specify a user and a reason to slap them! 👏👏👏 \
     &nbsp;&nbsp;&nbsp; Leave the user unspecified to randomize who you slap.
+
+| Slap |
+|----------|
+|![slap](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Slap.png?raw=true)|
 
 * **Mimic** \
     &nbsp;&nbsp;&nbsp; Make CatBot say anything with the mimic command! Whatever you say, CatBot will mimic.
@@ -77,6 +101,8 @@ CatBot has several amazing commands/features, so let's go over all of them right
 <a name="install">
 
 ## Installation
+
+Before we can install this script, you must first create a discord application. [This video](https://youtu.be/Oy5HGvrxM4o?si=oyNEblmcLyoa_5J_&t=55) is a great and simple tutorial to get you started! It covers making a basic discord bot in node.js, however this project is written with discord.py, so the programming itself is different here.
 
 1. Clone this repository into your home directory and cd into it
     ```bash
