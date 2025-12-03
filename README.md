@@ -81,7 +81,7 @@ CatBot has several amazing commands/features, so let's go over all of them right
 |![meme](https://github.com/Tranquil-M/CatBot-source/blob/main/Sample/Memes.png?raw=true)|
 
 * **Cats** \
-    &nbsp;&nbsp;&nbsp; Do you like-- no, _love_ looking at cat pictures? I mean, that's what the internet is based on! The cats command grabs up to 10 random cats from the [CAAS (Cats as a Service)](https://cataas.com/) API.
+    &nbsp;&nbsp;&nbsp; Do you like-- no, _love_ looking at cat pictures? I mean, that's what the internet is built on! The cats command grabs up to 10 random cats from the [CAAS (Cats as a Service)](https://cataas.com/) API.
 
 | Join | Limit |
 |------|-------|
