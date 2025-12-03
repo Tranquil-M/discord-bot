@@ -103,7 +103,7 @@ async def get_or_create_audit_channel(
 
     overwrites = {
         guild.default_role: discord.PermissionOverwrite(view_channel=False),
-        guild.owner: discord.Permissions(view_channel=True),
+        guild.owner: discord.PermissionOverwrite(view_channel=True),
         guild.me: discord.PermissionOverwrite(view_channel=True),
     }
 
