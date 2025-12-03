@@ -47,7 +47,6 @@ class Funny_Actions(commands.Cog):
         description="Sends a random meow sound affect!",
     )
     async def meow(self, interaction: discord.Interaction):
-        # choose mp3
         files = [f for f in os.listdir(self.sfx_path) if f.lower().endswith(".mp3")]
 
         if not files:
@@ -57,7 +56,6 @@ class Funny_Actions(commands.Cog):
         chosen = random.choice(files)
         full_path = os.path.join(self.sfx_path, chosen)
 
-        # create file object
         file = discord.File(full_path, filename="meow.mp3")
 
         await interaction.response.send_message("You asked for this, bucko!", file=file)
@@ -117,7 +115,7 @@ class Funny_Actions(commands.Cog):
     @app_commands.command(name="cats", description="Grabs a random cat image")
     async def cats(self, interaction: discord.Interaction, amount: Optional[int]):
         await interaction.response.defer()
-        if amount is None:
+        if amount is None or amount < 1:
             amount = 1
         elif amount > 10:
             await interaction.followup.send(
