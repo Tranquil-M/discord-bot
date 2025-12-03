@@ -9,7 +9,7 @@ This repository contains the source code to my discord bot, CatBot!
 | ------------- |:-------------:|
 | [What can it do?](#dowhat) | What can CatBot do? |
 | [Installation](#install) | Directions to clone and use this repository! |
-| [Used Python Packages](#pkgs) | All python used in this repo! |
+| [Used Python Packages](#pkgs) | All pip used in this repo! |
 
 <a name="dowhat">
 
