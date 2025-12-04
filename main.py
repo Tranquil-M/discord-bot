@@ -43,13 +43,6 @@ async def sync(ctx):
         await ctx.send(f"Sync failed: `{e}`")
 
 
-@bot.tree.command(
-    name="hello", description="Says hello back to the person who ran the command."
-)
-async def hello(interaction: discord.Interaction):
-    await interaction.response.send_message(f"{interaction.user.mention} Hello there!")
-
-
 @bot.tree.error
 async def on_app_command_error(
     interaction: discord.Interaction, error: app_commands.AppCommandError
@@ -62,6 +55,11 @@ async def on_app_command_error(
     elif isinstance(error, app_commands.CommandInvokeError):
         await interaction.response.send_message(
             f"You're either trying to run this on yourself, or me. And I don't like the idea of either! {error}",
+            ephemeral=True,
+        )
+    elif isinstance(error, app_commands.CheckFailure):
+        await interaction.response.send_message(
+            "Oof! This command failed to execute! Try making your own app next time...",
             ephemeral=True,
         )
     else:
