@@ -22,7 +22,7 @@ with open("./cogs/bot_statuses.txt") as f:
     bot_statuses = cycle(statuses)
 
 
-@tasks.loop(seconds=30)
+@tasks.loop(seconds=120)
 async def change_status():
     await bot.change_presence(activity=discord.CustomActivity(name=next(bot_statuses)))
 

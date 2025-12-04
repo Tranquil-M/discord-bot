@@ -38,7 +38,7 @@ class Funny_Actions(commands.Cog):
             "The outlook seems pretty positive!",
             "Yes.",
             "Hm... I'm looking at my notebook here... it seems to point to yes!",
-            "My reply feels kind of crazy... please try again later.",
+            "My reply feels kind of hazy... please try again later.",
             "Ask again later I'm tired.",
             "I... better not tell you now.",
             "I cannot predict right now... my computer brain is bzzt!",
@@ -263,7 +263,7 @@ class Funny_Actions(commands.Cog):
             to_slap = interaction.user
 
         embed = discord.Embed(
-            description=f'{interaction.user.mention} slaps {to_slap.mention} for "{reason}"!',
+            description=f'{interaction.user.mention} slapped {to_slap.mention} for "{reason}"!',
             color=discord.Color.blue(),
         )
         embed.set_image(url=gif)

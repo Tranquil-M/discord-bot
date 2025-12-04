@@ -20,7 +20,7 @@ CatBot has several amazing commands/features, so let's go over all of them right
 ### Passive Features
 
 * **Statuses** \
-      &nbsp; &nbsp; &nbsp; CatBot shuffles through a library of statuses, all of which are held in `cogs/bot_statuses.txt`. Adding new statuses is simple, just put some new text on a new line and call it a day! It will shuffle through them every 30 seconds.
+      &nbsp; &nbsp; &nbsp; CatBot shuffles through a library of statuses, all of which are held in `cogs/bot_statuses.txt`. Adding new statuses is simple, just put some new text on a new line and call it a day! It will shuffle through them every 2 minutes.
 
 * **Syncing** \
     &nbsp;&nbsp;&nbsp; To avoid being rate limited, CatBot contains one context command, `sync`, which can be called using `!sync` on any discord channel. You must be the owner of your application in order for it to function. The sync command syncs together changes to slash commands globally, and those changes are applied after refreshing discord.
