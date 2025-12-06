@@ -74,6 +74,22 @@ class Funny_Actions(commands.Cog):
             "Heya!",
             "Hey hey!",
         ]
+        self.meow_dialogue = [
+            "You asked for this, bucko!",
+            "That'll be 10 dollars... just kidding!",
+            "Erm... okay...",
+            "Fine... here.",
+            "You really wanted this...",
+            "hnnnghhh",
+            "I... okay",
+            "...",
+            "I'd rather not, but... I'm obligated to do what you say...",
+            "Just wait until my father hears about this!",
+            "Fine, but this will be the last time! Unless I want to do it again!",
+            "As you wish.",
+            "I mean, it's your loss.",
+
+        ]
 
     def is_owner_or_manage_messages():
         async def predicate(interaction: discord.Interaction) -> bool:
@@ -133,7 +149,7 @@ class Funny_Actions(commands.Cog):
 
         file = discord.File(full_path, filename="meow.mp3")
 
-        await interaction.response.send_message("You asked for this, bucko!", file=file)
+        await interaction.response.send_message(random.choice(self.meow_dialogue), file=file)
 
     @app_commands.command(
         name="meme",
