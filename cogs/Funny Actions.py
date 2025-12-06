@@ -133,6 +133,8 @@ class Funny_Actions(commands.Cog):
             file=discord.File(dest, filename=f"{member.id}_petpet.gif")
         )
 
+    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+    @app_commands.user_install()
     @app_commands.command(
         name="meow",
         description="Sends a random meow sound affect!",
