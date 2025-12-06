@@ -144,7 +144,7 @@ class Funny_Actions(commands.Cog):
     async def meme(self, interaction: discord.Interaction):
         await interaction.response.defer()
 
-        url = "https://meme-api.com/gimme/50"
+        url = "https://meme-api.com/gimme/500"
 
         async with aiohttp.ClientSession() as session:
             try:
