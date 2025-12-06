@@ -137,57 +137,54 @@ class Funny_Actions(commands.Cog):
 
     @app_commands.command(
         name="meme",
-        description='Grabs a random meme from the "hot" category of r/memes',
+        description="Fetches a random meme using meme-api.com"
     )
     @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @app_commands.user_install()
     async def meme(self, interaction: discord.Interaction):
         await interaction.response.defer()
-        url = "https://www.reddit.com/r/memes/hot.json?limit=500"
-        headers = {"User-Agent": "CatBot/0.1 by Tranquil"}
+
+        url = "https://meme-api.com/gimme/50"
 
         async with aiohttp.ClientSession() as session:
             try:
-                async with session.get(url, headers=headers) as response:
+                async with session.get(url) as response:
                     if response.status != 200:
                         await interaction.followup.send(
-                            f"Could not fetch memes, Reddit returned status {response.status}..."
+                            f"API returned status {response.status}."
                         )
                         return
 
                     data = await response.json()
             except Exception as e:
-                await interaction.followup.send(f"Error fetching memes: {e}")
+                await interaction.followup.send(f"Error fetching meme: {e}")
                 return
 
-        posts = data.get("data", {}).get("children", [])
-        image_posts = [
-            post["data"]
-            for post in posts
-            if post["data"].get("post_hint") == "image"
-            and not post["data"].get("over_18", False)
-        ]
-
-        if not image_posts:
-            await interaction.followup.send("No memes found. :sob:")
+        memes = data.get("memes", data.get("children", []))
+        if not memes:
+            await interaction.followup.send("Looks like I'm out of memes... Sorry!")
             return
 
-        random_post = random.choice(image_posts)
-        meme_embed = discord.Embed(
-            color=discord.Color.blue(),
-        )
-        meme_embed.set_author(
+        sfw_memes = [m for m in memes if not m.get("nsfw", False)]
+        if not sfw_memes:
+            await interaction.followup.send("I don't know how this is possible, but I can't find a SINGLE SFW meme...")
+            return
+        
+        random_meme = random.choice(sfw_memes)
+        title = random_meme.get("title", "Untitled Meme")
+        image_url = random_meme.get("url")
+        author = random_meme.get("author", "Unknown")
+
+        embed = discord.Embed(color=discord.Color.blue())
+        embed.set_author(
             name=f"Meme request by {interaction.user.name}",
             icon_url=interaction.user.display_avatar.url,
         )
-        meme_embed.set_image(url=random_post["url"])
-        meme_embed.set_footer(
-            text=f"Post created by {random_post.get('author', 'N/A')}", icon_url=None
-        )
+        embed.set_image(url=image_url)
+        embed.set_footer(text=f"Posted by u/{author}")
 
-        await interaction.followup.send(
-            random_post.get("title", "Untitled meme"), embed=meme_embed
-        )
+        await interaction.followup.send(title, embed=embed)
+
 
     @app_commands.command(name="cats", description="Grabs a random cat image")
     @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
