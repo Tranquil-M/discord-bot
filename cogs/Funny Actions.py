@@ -213,15 +213,16 @@ class Funny_Actions(commands.Cog):
             amount = 1
         elif amount > 10:
             await interaction.followup.send(
-                "Please keep it under 10 cats at a time! I don't have enough food to get more than 10 cats to pose... 😭"
+                "Please keep it under 10 cats at a time! I don't have enough food to get more than 10 cats to pose... 😭",
+                ephemeral=True
             )
-            await asyncio.sleep(3)
-            await interaction.followup.send("Here, take a picture of me instead!")
             await asyncio.sleep(1.5)
+            await interaction.followup.send("Here, take a picture of me instead!", ephemeral=True)
+            await asyncio.sleep(1)
             embed = discord.Embed(colour=discord.Colour.blue())
             embed.set_image(url=self.bot.user.display_avatar.url)
             embed.set_footer(text="Most beautiful cat alive... 😮‍💨")
-            await interaction.channel.send(embed=embed)
+            await interaction.channel.send(embed=embed, ephemeral=True)
             return
 
         await interaction.followup.send("Come here kitties!")
@@ -243,7 +244,7 @@ class Funny_Actions(commands.Cog):
 
         for embed in embeds:
             await interaction.followup.send(embed=embed, silent=True)
-            await asyncio.sleep(0)
+            await asyncio.sleep(0.1)
 
     @app_commands.command(
         name="slap",
@@ -285,11 +286,13 @@ class Funny_Actions(commands.Cog):
         await interaction.followup.send(embed=embed)
 
     @app_commands.command(name="mimic", description="Mimics anything you say!")
-    @is_owner_or_manage_messages()
     async def mimic(self, interaction: discord.Interaction, *, sentence: str):
         await interaction.response.defer()
-        await interaction.delete_original_response()
-        await interaction.channel.send(sentence)
+        if await self.bot.is_owner(interaction.user) or interaction.user.guild_permissions.manage_messages:
+            await interaction.delete_original_response()
+            await interaction.channel.send(sentence)
+        else:
+            await interaction.followup.send(sentence)
 
     @app_commands.command(
         name="8ball", description="Ask CatBot a question, and get an 8ball-like answer!"
@@ -309,9 +312,6 @@ class Funny_Actions(commands.Cog):
         await interaction.response.send_message(
             f"{interaction.user.mention} {random.choice(self.hello_responses)}"
         )
-
-    def cog_unload(self):
-        self.bot.loop.create_task(self.reddit.close())
 
 
 async def setup(bot):

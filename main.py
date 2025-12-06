@@ -38,9 +38,11 @@ async def on_ready():
 async def sync(ctx):
     try:
         synced = await bot.tree.sync()
-        await ctx.send(f"Synced {len(synced)} commands.")
+        print(f"Synced {len(synced)} commands.")
     except Exception as e:
-        await ctx.send(f"Sync failed: `{e}`")
+        print("Sync failed:", e)
+    finally:
+        await ctx.message.delete()
 
 
 @bot.tree.error
@@ -120,6 +122,19 @@ async def load():
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
 
+@bot.command(name="reload")
+@commands.is_owner()
+async def reload(ctx):
+    try:
+        for filename in os.listdir("./cogs"):
+            if filename.endswith(".py"):
+                await bot.unload_extension(f"cogs.{filename[:-3]}")
+                await bot.load_extension(f"cogs.{filename[:-3]}")
+                print(f"{filename[:-3]} successfully reloaded!")
+    except Exception as e:
+        print("Failed to reload cogs:", e)
+    finally:
+        await ctx.message.delete()
 
 async def main():
     async with bot:
