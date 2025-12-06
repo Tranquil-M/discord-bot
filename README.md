@@ -98,6 +98,9 @@ CatBot has several amazing commands/features, so let's go over all of them right
 * **Mimic** \
     &nbsp;&nbsp;&nbsp; Make CatBot say anything with the mimic command! Whatever you say, CatBot will mimic.
 
+* **8Ball** \
+    &nbsp;&nbsp;&nbsp; Ask CatBot any question, and they will return an 8Ball-like answer.
+
 <a name="install">
 
 ## Installation
